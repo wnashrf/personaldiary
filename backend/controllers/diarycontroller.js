@@ -3,13 +3,24 @@ const Diary = require('../models/diary');
  
 // CREATE
 const createDiary = async (req, res) => {
+ 
     try {
  
-        const diary = await Diary.create(req.body);
+        const diary = await Diary.create({
+ 
+            user: req.user._id,
+ 
+            title: req.body.title,
+ 
+            content: req.body.content,
+ 
+            mood: req.body.mood
+        });
  
         res.status(201).json(diary);
  
     } catch (error) {
+ 
         res.status(500).json({
             message: error.message
         });
