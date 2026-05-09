@@ -1,0 +1,61 @@
+# Personal Diary API Tests
+# Base URL
+@baseUrl = http://localhost:5000/api
+
+# Variables (update these after running requests)
+@token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY5ZmVkNmIwYzJjYzg1YzAyZjMyYmJmOCIsImlhdCI6MTc3ODMwOTI0OSwiZXhwIjoxNzc4Mzk1NjQ5fQ.B2kWNps3fIeJoJK9Xfuiw4XyLIvgP4hT8m0tdvbszmI
+@userId = 69fed6b0c2cc85c02f32bbf8
+@diaryId = 69fed89cc2cc85c02f32bbf9
+
+### Register User
+POST {{baseUrl}}/auth/register
+Content-Type: application/json
+
+{
+  "name": "Afham",
+  "email": "afham@example.com",
+  "password": "password123"
+}
+
+### Login User
+POST {{baseUrl}}/auth/login
+Content-Type: application/json
+
+{
+  "email": "afham@example.com",
+  "password": "password123"
+}
+
+### Create Diary Entry (requires token from login)
+POST {{baseUrl}}/diaries
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+  "title": "My First Diary Entry",
+  "content": "This is my first diary entry. I'm excited to start journaling!",
+  "mood": "happy"
+}
+
+### Get All Diary Entries
+GET {{baseUrl}}/diaries
+Authorization: Bearer {{token}}
+
+### Get Diary Entry by ID
+GET {{baseUrl}}/diaries/{{diaryId}}
+Authorization: Bearer {{token}}
+
+### Update Diary Entry
+PUT {{baseUrl}}/diaries/{{diaryId}}
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+  "title": "Updated Diary Entry",
+  "content": "I've updated this diary entry with new thoughts.",
+  "mood": "reflective"
+}
+
+### Delete Diary Entry
+DELETE {{baseUrl}}/diaries/{{diaryId}}
+Authorization: Bearer {{token}}
