@@ -3,17 +3,17 @@
 @baseUrl = http://localhost:5000/api
 
 # Variables (update these after running requests)
-@token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY5ZmVkNmIwYzJjYzg1YzAyZjMyYmJmOCIsImlhdCI6MTc3ODMwOTI0OSwiZXhwIjoxNzc4Mzk1NjQ5fQ.B2kWNps3fIeJoJK9Xfuiw4XyLIvgP4hT8m0tdvbszmI
-@userId = 69fed6b0c2cc85c02f32bbf8
-@diaryId = 69fed89cc2cc85c02f32bbf9
+@token = <JWT_TOKEN>
+@userId = <USER_ID>
+@diaryId = <DIARY_ENTRY_ID>
 
 ### Register User
 POST {{baseUrl}}/auth/register
 Content-Type: application/json
 
 {
-  "name": "Afham",
-  "email": "afham@example.com",
+  "name": "test123",
+  "email": "test123@example.com",
   "password": "password123"
 }
 
@@ -22,7 +22,7 @@ POST {{baseUrl}}/auth/login
 Content-Type: application/json
 
 {
-  "email": "afham@example.com",
+  "email": "test123@example.com",
   "password": "password123"
 }
 
